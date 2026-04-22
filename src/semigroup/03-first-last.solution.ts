@@ -3,13 +3,13 @@ import * as N from 'fp-ts/number'
 import { describe, it, expect } from 'vitest'
 
 export const getFirstValue = <T>(values: T[]): T =>
-  S.concatAll(S.first<T>())(values[0])(values)
+  S.concatAll(S.first<T>())(values[0]!)(values)
 
 export const getLastValue = <T>(values: T[]): T =>
-  S.concatAll(S.last<T>())(values[0])(values)
+  S.concatAll(S.last<T>())(values[0]!)(values)
 
 export const getMinNumber = (numbers: number[]): number =>
-  S.concatAll(S.min(N.Ord))(numbers[0])(numbers)
+  S.concatAll(S.min(N.Ord))(numbers[0]!)(numbers)
 
 //TESTS
 describe('Semigroup first, last, min', () => {

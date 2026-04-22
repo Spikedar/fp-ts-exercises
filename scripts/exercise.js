@@ -143,7 +143,7 @@ console.log(`
 
 let isFirstRun = true;
 
-chokidar.watch(exerciseFile).on("all", (event, path) => {
+chokidar.watch(exerciseFile).on("all", () => {
   try {
     console.clear();
     console.log(`
@@ -179,7 +179,7 @@ Next steps:
   npm run ${mode === 'SOLUTION' ? 'exercise' : 'solution'} -- ${dir} ${exerciseName.split('-')[0]}    ${mode === 'SOLUTION' ? 'Try the exercise yourself' : 'View the solution'}
 `);
     process.exit(0);
-  } catch (e) {
+  } catch {
     console.log(`
 ╔═══════════════════════════════════════════════════════════╗
 ║  ❌ Tests failed - keep trying!                          ║

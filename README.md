@@ -13,13 +13,13 @@ Interactive exercises to learn functional programming in TypeScript using the fp
 #### Requirements
 
 - Node.js >= 20.9.0 (automatically managed with `.nvmrc` if using nvm)
-- npm >= 8.0.0
+- npm >= 10.0.0
 
 #### Installation
 
 1. Clone the repository
    ```bash
-   git clone https://github.com/Mariefay/fp-ts-exercises.git
+   git clone https://github.com/Spikedar/fp-ts-exercises.git
    cd fp-ts-exercises
    ```
 

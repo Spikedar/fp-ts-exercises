@@ -25,9 +25,12 @@ export const fetchFromApi = (endpoint: string): RTE.ReaderTaskEither<AppConfig, 
     RTE.map((url) => ({ data: url }))
   )
 
-export const fetchWithFallback = (key: string, endpoint: string): RTE.ReaderTaskEither<AppConfig, string, unknown> =>
+export const fetchWithFallback = (
+  key: string,
+  endpoint: string
+): RTE.ReaderTaskEither<AppConfig, string, { data: string }> =>
   pipe(
-    fetchFromCache(key),
+    fetchFromCache<{ data: string }>(key),
     RTE.orElse(() => fetchFromApi(endpoint))
   )
 

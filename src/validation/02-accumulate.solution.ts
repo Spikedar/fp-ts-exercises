@@ -1,6 +1,4 @@
 import * as E from 'fp-ts/Either'
-import * as A from 'fp-ts/Array'
-import { pipe } from 'fp-ts/function'
 import { describe, it, expect } from 'vitest'
 
 type ValidationError = string[]

@@ -4,12 +4,12 @@ export default defineConfig({
   test: {
     globals: true,
     environment: 'node',
-    include: ['src/**/*.solution.{js,ts}'],
-    exclude: ['node_modules', 'dist'],
-    reporter: ['verbose'],
+    include: ['src/**/*.solution.ts'],
+    exclude: ['node_modules', 'dist', 'playground'],
+    reporters: ['verbose'],
     typecheck: {
       checker: 'tsc',
-      include: ['src/**/*.solution.{ts}'],
+      include: ['src/**/*.solution.ts'],
     },
   },
 })

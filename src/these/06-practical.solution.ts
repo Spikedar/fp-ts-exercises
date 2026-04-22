@@ -1,6 +1,4 @@
 import * as Th from 'fp-ts/These'
-import * as A from 'fp-ts/Array'
-import * as S from 'fp-ts/Semigroup'
 import { describe, it, expect } from 'vitest'
 
 type ValidationResult<A> = Th.These<string[], A>
@@ -28,43 +26,30 @@ export const validateEmail = (email: string): ValidationResult<string> => {
   return Th.right(email)
 }
 
-const ArraySemigroup = <T>(): S.Semigroup<T[]> => ({
-  concat: (x, y) => [...x, ...y],
-})
-
 export const combineValidations = <A, B>(
   v1: ValidationResult<A>,
   v2: ValidationResult<B>
-): ValidationResult<[A, B]> => {
-  const theseSemigroup = Th.getSemigroup(
-    ArraySemigroup<string>(),
-    S.struct<[A, B]>({
-      0: S.first<A>(),
-      1: S.first<B>(),
-    })
-  )
-
-  return Th.fold(
+): ValidationResult<[A, B]> =>
+  Th.fold<string[], A, ValidationResult<[A, B]>>(
     (e1) =>
-      Th.fold(
+      Th.fold<string[], B, ValidationResult<[A, B]>>(
         (e2) => Th.left([...e1, ...e2]),
-        (a2) => Th.left(e1),
-        (e2, a2) => Th.left([...e1, ...e2])
+        () => Th.left(e1),
+        (e2) => Th.left([...e1, ...e2])
       )(v2),
     (a1) =>
-      Th.fold(
+      Th.fold<string[], B, ValidationResult<[A, B]>>(
         (e2) => Th.left(e2),
         (a2) => Th.right<string[], [A, B]>([a1, a2]),
         (e2, a2) => Th.both(e2, [a1, a2])
       )(v2),
     (e1, a1) =>
-      Th.fold(
+      Th.fold<string[], B, ValidationResult<[A, B]>>(
         (e2) => Th.left([...e1, ...e2]),
         (a2) => Th.both(e1, [a1, a2]),
         (e2, a2) => Th.both([...e1, ...e2], [a1, a2])
       )(v2)
   )(v1)
-}
 
 //TESTS
 describe('These practical validation', () => {

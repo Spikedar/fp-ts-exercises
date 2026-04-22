@@ -1,6 +1,5 @@
 import * as S from 'fp-ts/Semigroup'
 import * as N from 'fp-ts/number'
-import * as Str from 'fp-ts/string'
 import { describe, it, expect } from 'vitest'
 
 const StringWithSpace: S.Semigroup<string> = {

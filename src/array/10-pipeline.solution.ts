@@ -1,5 +1,6 @@
 import * as A from 'fp-ts/Array'
 import * as N from 'fp-ts/number'
+import * as Ord from 'fp-ts/Ord'
 import { pipe } from 'fp-ts/function'
 import { describe, it, expect } from 'vitest'
 
@@ -11,13 +12,18 @@ type Product = {
   inStock: boolean
 }
 
+const byPrice: Ord.Ord<Product> = pipe(
+  N.Ord,
+  Ord.contramap((p: Product) => p.price)
+)
+
 export const getAffordableElectronics = (products: Product[], maxPrice: number): string[] =>
   pipe(
     products,
     A.filter((p) => p.category === 'Electronics'),
     A.filter((p) => p.inStock),
     A.filter((p) => p.price <= maxPrice),
-    A.sort(pipe(N.Ord, (ord) => ({ compare: (a: Product, b: Product) => ord.compare(a.price, b.price) }))),
+    A.sort(byPrice),
     A.map((p) => p.name)
   )
 
