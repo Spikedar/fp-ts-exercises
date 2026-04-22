@@ -3,7 +3,7 @@ import * as E from 'fp-ts/Either'
 import { pipe } from 'fp-ts/function'
 import { describe, it, expect } from 'vitest'
 
-type Config = {}
+type Config = Record<string, never>
 
 const failingOperation = (): RTE.ReaderTaskEither<Config, number, string> =>
   RTE.left(404)

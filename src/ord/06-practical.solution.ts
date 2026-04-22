@@ -38,10 +38,10 @@ describe('Ord practical', () => {
     ]
     const result = sortTasks(tasks)
 
-    expect(result[0].priority).toBe(3)
-    expect(result[1].priority).toBe(2)
-    expect(result[1].name).toBe('Deploy')
-    expect(result[2].name).toBe('Review PR')
+    expect(result[0]!.priority).toBe(3)
+    expect(result[1]!.priority).toBe(2)
+    expect(result[1]!.name).toBe('Deploy')
+    expect(result[2]!.name).toBe('Review PR')
   })
 
   it('checks if value is between bounds', () => {

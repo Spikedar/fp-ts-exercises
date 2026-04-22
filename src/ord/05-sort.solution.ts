@@ -29,8 +29,8 @@ describe('Ord sort', () => {
       { name: 'Charlie', score: 78 },
     ]
     const result = sortByScore(users)
-    expect(result[0].name).toBe('Charlie')
-    expect(result[2].name).toBe('Bob')
+    expect(result[0]!.name).toBe('Charlie')
+    expect(result[2]!.name).toBe('Bob')
   })
 
   it('clamps values', () => {

@@ -1,6 +1,5 @@
 import * as NEA from 'fp-ts/NonEmptyArray'
 import * as O from 'fp-ts/Option'
-import * as N from 'fp-ts/number'
 import { pipe } from 'fp-ts/function'
 import { describe, it, expect } from 'vitest'
 

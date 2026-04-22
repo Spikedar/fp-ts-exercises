@@ -1,7 +1,6 @@
 import * as A from 'fp-ts/Array'
 import * as Ord from 'fp-ts/Ord'
 import * as N from 'fp-ts/number'
-import * as S from 'fp-ts/string'
 import { pipe } from 'fp-ts/function'
 import { describe, it, expect } from 'vitest'
 

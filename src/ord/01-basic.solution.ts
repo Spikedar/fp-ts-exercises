@@ -1,4 +1,3 @@
-import * as Ord from 'fp-ts/Ord'
 import * as N from 'fp-ts/number'
 import * as S from 'fp-ts/string'
 import { describe, it, expect } from 'vitest'

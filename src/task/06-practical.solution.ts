@@ -17,8 +17,12 @@ export const batchFetchCache = (keys: string[]): T.Task<CacheEntry[]> =>
     A.traverse(T.ApplicativePar)(fetchOne)
   )
 
-export const retryWithDelay = <A>(task: T.Task<A>, delayMs: number, attempts: number): T.Task<A> =>
-  task // Note: Task always succeeds, so retry without error handling just runs once
+export const retryWithDelay = <A>(
+  task: T.Task<A>,
+  _delayMs: number,
+  _attempts: number
+): T.Task<A> =>
+  task // Task always succeeds, so retry without error handling just runs once.
 
 //TESTS
 describe('Task practical examples', () => {

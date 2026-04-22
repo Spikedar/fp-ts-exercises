@@ -1,5 +1,4 @@
 import * as Th from 'fp-ts/These'
-import * as S from 'fp-ts/Semigroup'
 import * as Str from 'fp-ts/string'
 import * as N from 'fp-ts/number'
 import { describe, it, expect } from 'vitest'

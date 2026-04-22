@@ -9,7 +9,7 @@ export const toString = (these: Th.These<string, number>): string =>
   )(these)
 
 export const getValue = (these: Th.These<string, number>, defaultValue: number): number =>
-  Th.fold(
+  Th.fold<string, number, number>(
     () => defaultValue,
     (value) => value,
     (_warning, value) => value
